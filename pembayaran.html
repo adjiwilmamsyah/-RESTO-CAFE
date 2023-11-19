@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #FFDAB9;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: black;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        label {
+            color: black;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+            margin: 0;
+        }
+    </style>
+    <title>Aplikasi Pemesanan Makanan</title>
+    <script>
+        var menu = {
+            "Bakso": 15000,
+            "Seblak Prasmanan": 10000,
+            "Pempek Palembang": 14000,
+            "Nasi Liwet Paket Kumplit": 25000,
+            "Batagor Kering": 10000,
+            "Tahu Gejrot": 7000,
+            "Chicken Katsu": 10000,
+            "Tumpeng": 70000,
+            "Nasi Udang": 12000,
+            "Chicken Steak": 10000,
+            "Martabak Asin": 12000,
+            "Spagheti": 10000,
+            "Ayam Geprek": 10000,
+
+            // Minuman
+            "Boba Milk Tea": 10000,
+            "Matcha Tea": 10000,
+            "Capuccino Ice": 9000,
+            "Es Teh Manis": 6000,
+            "Kopi Hitam": 6000,
+            "Taro Shake": 10000,
+
+            // Dessert
+            "Red Velvet": 15000,
+            "Condensed Milk Chocolate": 10000,
+            "Matcha": 15000,
+            "Ice Cream": 6000,
+            "Martabak Mini Manis": 10000,
+            "Pudding Coklat": 12000
+        };
+
+        function hitungHarga() {
+            var jumlahMakanan = parseInt(document.getElementById("jumlahMakanan").value);
+            var jenisMakanan = document.getElementById("jenisMakanan").value;
+            var harga = menu[jenisMakanan];
+
+            var totalHarga = isNaN(jumlahMakanan) ? 0 : jumlahMakanan * harga;
+            document.getElementById("totalHarga").innerHTML = "Total Harga: Rp " + totalHarga;
+        }
+
+        function bayar() {
+            var namaPelanggan = document.getElementById("namaPelanggan").value;
+            var jumlahMakanan = parseInt(document.getElementById("jumlahMakanan").value);
+            var jenisMakanan = document.getElementById("jenisMakanan").value;
+            var harga = menu[jenisMakanan];
+
+            var totalHarga = isNaN(jumlahMakanan) ? 0 : jumlahMakanan * harga;
+            var jumlahBayar = parseFloat(prompt("Masukkan jumlah uang yang dibayar:"));
+            var kembalian = jumlahBayar - totalHarga;
+
+            if (kembalian >= 0) {
+                alert("Nama Pelanggan: " + namaPelanggan + "\n" +
+                    "Jumlah Makanan: " + jumlahMakanan + "\n" +
+                    "Jenis Makanan: " + jenisMakanan + "\n" +
+                    "Total Harga: Rp " + totalHarga + "\n" +
+                    "Jumlah Bayar: Rp " + jumlahBayar + "\n" +
+                    "Kembalian: Rp " + kembalian);
+            } else {
+                alert("Jumlah uang yang dibayar tidak mencukupi.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Aplikasi Pemesanan Makanan</h1>
+        <form>
+            Nama Pelanggan: <input type="text" id="namaPelanggan"><br><br>
+            Jumlah Makanan: <input type="number" id="jumlahMakanan"><br><br>
+            Jenis Makanan:
+            <select id="jenisMakanan">
+                <!-- Makanan -->
+                <optgroup label="Makanan">
+                    <option value="Bakso">Bakso (Rp 15,000)</option>
+                    <option value="Seblak Prasmanan">Seblak Prasmanan (Rp 10,000)</option>
+                    <option value="Pempek Palembang">Pempek Palembang (Rp 14,000)</option>
+                    <option value="Nasi Liwet Paket Kumplit">Nasi Liwet Paket Kumplit (Rp 25,000)</option>
+                    <option value="Batagor Kering">Batagor Kering (Rp 10,000)</option>
+                    <option value="Tahu Gejrot">Tahu Gejrot (Rp 7,000)</option>
+                    <option value="Chicken Katsu">Chicken Katsu (Rp 10,000)</option>
+                    <option value="Tumpeng">Tumpeng (Rp 70,000)</option>
+                    <option value="Nasi Udang">Nasi Udang (Rp 12,000)</option>
+                    <option value="Chicken Steak">Chicken Steak (Rp 10,000)</option>
+                    <option value="Martabak Asin">Martabak Asin (Rp 12,000)</option>
+                    <option value="Spagheti">Spagheti (Rp 10,000)</option>
+                    <option value="Ayam Geprek">Ayam Geprek (Rp 10,000)</option>
+                </optgroup>
+
+                <!-- Minuman -->
+                <optgroup label="Minuman">
+                    <option value="Boba Milk Tea">Boba Milk Tea (Rp 10,000)</option>
+                    <option value="Matcha Tea">Matcha Tea (Rp 10,000)</option>
+                    <option value="Capuccino Ice">Capuccino Ice (Rp 9,000)</option>
+                    <option value="Es Teh Manis">Es Teh Manis (Rp 6,000)</option>
+                    <option value="Kopi Hitam">Kopi Hitam (Rp 6,000)</option>
+                    <option value="Taro Shake">Taro Shake (Rp 10,000)</option>
+                </optgroup>
+
+                <!-- Dessert -->
+                <optgroup label="Dessert">
+                    <option value="Red Velvet">Red Velvet (Rp 15,000)</option>
+                    <option value="Condensed Milk Chocolate">Condensed Milk Chocolate (Rp 10,000)</option>
+                    <option value="Matcha">Matcha (Rp 15,000)</option>
+                    <option value="Ice Cream">Ice Cream (Rp 6,000)</option>
+                    <option value="Martabak Mini Manis">Martabak Mini Manis (Rp 10,000)</option>
+                    <option value="Pudding Coklat">Pudding Coklat (Rp 12,000)</option>
+                </optgroup>
+            </select><br>
+            <button type="button" onclick="hitungHarga()">Hitung Harga</button><br>
+            <div id="totalHarga"></div><br>
+            <button type="button" onclick="bayar()">Bayar</button><br>
+        </form>
+    </div>
+</body>
+
+</html>
